@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus - Seu Assistente Desktop</title>
+    <title>NexusAI - Assistente Desktop Inteligente</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
 </head>
 <body>
 
     <!-- Particles Background -->
     <div id="particles-canvas"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
@@ -21,14 +25,16 @@
                     <i class="fas fa-brain"></i>
                 </div>
                 <span class="logo-text">Nexus</span>
-                <span class="logo-badge">v2.0</span>
+                <span class="logo-badge">v3.0</span>
             </div>
 
             <div class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active" data-section="home">Home</a>
                 <a href="#features" class="nav-link" data-section="features">Funcionalidades</a>
+                <a href="#tools" class="nav-link" data-section="tools">Ferramentas</a>
                 <a href="#tech" class="nav-link" data-section="tech">Tecnologia</a>
                 <a href="#commands" class="nav-link" data-section="commands">Comandos</a>
+                <a href="#stats" class="nav-link" data-section="stats">Estatísticas</a>
                 <a href="#roadmap" class="nav-link" data-section="roadmap">Roadmap</a>
             </div>
 
@@ -51,19 +57,19 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <i class="fas fa-crown"></i>
-                <span>Assistente Desktop Inteligente</span>
+                <span>Assistente Desktop Autônomo com IA</span>
             </div>
             <h1 class="hero-title">
                 Seu <span class="gradient-text">Comando</span>,<br>
                 Nossa <span class="gradient-text">Ação</span>
             </h1>
             <p class="hero-subtitle">
-                Nexus é um assistente desktop autônomo com IA que entende, executa e aprende. 
-                Mais que um chatbot — seu parceiro digital de confiança.
+                Nexus é um assistente desktop de alto desempenho com IA que <strong>entende</strong>, <strong>executa</strong> e <strong>aprende</strong>.
+                Mais que um chatbot — seu parceiro digital de confiança, com <strong>+20 ferramentas integradas</strong>.
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-number" data-target="25">0</span>
                     <span class="stat-label">+ Ferramentas</span>
                 </div>
                 <div class="stat-item">
@@ -73,6 +79,10 @@
                 <div class="stat-item">
                     <span class="stat-number" data-target="24">0</span>
                     <span class="stat-label">/7 Disponível</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-label">Plataformas</span>
                 </div>
             </div>
             <div class="hero-actions">
@@ -84,6 +94,10 @@
                     <i class="fas fa-terminal"></i>
                     <span>Ver Comandos</span>
                 </a>
+                <button class="btn btn-ghost" onclick="playDemo()">
+                    <i class="fas fa-play"></i>
+                    <span>Ver Demo</span>
+                </button>
             </div>
         </div>
         <div class="hero-visual">
@@ -93,14 +107,21 @@
                     <span class="dot red"></span>
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
-                    <span class="code-title">nexus-terminal</span>
+                    <span class="code-title">nexus@terminal:~</span>
                 </div>
                 <div class="code-body">
-                    <span class="prompt">$</span>
-                    <span class="command">nexus --modo-autonomo</span>
-                    <span class="output">✅ Nexus está online.<br>▶️ Aguardando comandos...</span>
-                    <span class="cursor">|</span>
+                    <div class="line"><span class="prompt">$</span> <span class="command">nexus --modo-autonomo</span></div>
+                    <div class="line output">✅ Nexus está online.</div>
+                    <div class="line output">▶️ Aguardando comandos...</div>
+                    <div class="line"><span class="prompt">$</span> <span class="command typing-text">nexus --criar-site "landing-page" --deploy</span><span class="cursor">|</span></div>
                 </div>
+            </div>
+            <div class="floating-badges">
+                <div class="floating-badge" style="animation-delay: 0s"><i class="fab fa-python"></i></div>
+                <div class="floating-badge" style="animation-delay: 0.5s"><i class="fab fa-github"></i></div>
+                <div class="floating-badge" style="animation-delay: 1s"><i class="fab fa-google"></i></div>
+                <div class="floating-badge" style="animation-delay: 1.5s"><i class="fas fa-robot"></i></div>
+                <div class="floating-badge" style="animation-delay: 2s"><i class="fas fa-cloud"></i></div>
             </div>
         </div>
     </section>
@@ -108,82 +129,162 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="section-header">
-            <span class="section-tag">Funcionalidades</span>
-            <h2 class="section-title">Tudo que o <span class="gradient-text">Nexus</span> pode fazer</h2>
-            <p class="section-desc">Automação completa do seu desktop com apenas um comando de voz ou texto</p>
+            <span class="section-badge">Funcionalidades</span>
+            <h2 class="section-title">Poder na <span class="gradient-text">Palma da Sua Mão</span></h2>
+            <p class="section-description">Mais de 20 ferramentas integradas para executar qualquer tarefa sem sair do desktop.</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card" data-delay="0">
-                <div class="card-icon voice">
-                    <i class="fas fa-microphone"></i>
+                <div class="feature-icon" style="--icon-color: #6c5ce7">
+                    <i class="fas fa-terminal"></i>
                 </div>
-                <h3>Reconhecimento de Voz</h3>
-                <p>Comandos de voz em tempo real com wake word "Nexus". Mãos livres, produtividade total.</p>
+                <h3 class="feature-title">Execução Autônoma</h3>
+                <p class="feature-desc">Executa tarefas sem pedir permissão a cada passo. Entende o contexto e age por conta própria.</p>
+                <div class="feature-tags">
+                    <span>Zero Fricção</span>
+                    <span>Contextual</span>
+                </div>
             </div>
 
-            <div class="feature-card" data-delay="1">
-                <div class="card-icon brain">
-                    <i class="fas fa-robot"></i>
+            <div class="feature-card" data-delay="100">
+                <div class="feature-icon" style="--icon-color: #00cec9">
+                    <i class="fas fa-code"></i>
                 </div>
-                <h3>IA Autônoma</h3>
-                <p>Decisões inteligentes sem precisar de permissão a cada passo. Nexus age por você.</p>
+                <h3 class="feature-title">Código & Deploy</h3>
+                <p class="feature-desc">Cria sites completos com HTML/CSS/JS e faz deploy automático no GitHub Pages em segundos.</p>
+                <div class="feature-tags">
+                    <span>One-Shot</span>
+                    <span>GitHub Pages</span>
+                </div>
             </div>
 
-            <div class="feature-card" data-delay="2">
-                <div class="card-icon files">
-                    <i class="fas fa-folder-open"></i>
+            <div class="feature-card" data-delay="200">
+                <div class="feature-icon" style="--icon-color: #fd79a8">
+                    <i class="fas fa-file-alt"></i>
                 </div>
-                <h3>Gerenciamento de Arquivos</h3>
-                <p>Cria, edita, lê e organiza arquivos locais e no Google Drive. Seu espaço, nosso controle.</p>
+                <h3 class="feature-title">Gerenciamento de Arquivos</h3>
+                <p class="feature-desc">Cria, edita, lê e organiza arquivos locais e no Google Drive com comandos naturais.</p>
+                <div class="feature-tags">
+                    <span>Local</span>
+                    <span>Google Drive</span>
+                </div>
             </div>
 
-            <div class="feature-card" data-delay="3">
-                <div class="card-icon globe">
+            <div class="feature-card" data-delay="300">
+                <div class="feature-icon" style="--icon-color: #fdcb6e">
                     <i class="fas fa-globe"></i>
                 </div>
-                <h3>Navegação Web</h3>
-                <p>Pesquisa na web, extrai dados e interage com sites de forma autônoma.</p>
-            </div>
-
-            <div class="feature-card" data-delay="4">
-                <div class="card-icon calendar">
-                    <i class="fas fa-calendar"></i>
+                <h3 class="feature-title">Navegação Web</h3>
+                <p class="feature-desc">Pesquisa, navega, coleta dados e interage com sites usando browser headless ou visível.</p>
+                <div class="feature-tags">
+                    <span>Scraping</span>
+                    <span>Headless</span>
                 </div>
-                <h3>Calendário Google</h3>
-                <p>Cria eventos, lista compromissos e gerencia sua agenda sem abrir o navegador.</p>
             </div>
 
-            <div class="feature-card" data-delay="5">
-                <div class="card-icon music">
+            <div class="feature-card" data-delay="400">
+                <div class="feature-icon" style="--icon-color: #e17055">
                     <i class="fas fa-music"></i>
                 </div>
-                <h3>Controle de Mídia</h3>
-                <p>Volume, play/pause, próxima faixa — controle total da sua experiência sonora.</p>
+                <h3 class="feature-title">Mídia & Som</h3>
+                <p class="feature-desc">Controla volume, reprodução de mídia, emite sons e até fala em voz alta pelo sistema.</p>
+                <div class="feature-tags">
+                    <span>Volume</span>
+                    <span>TTS</span>
+                </div>
             </div>
 
-            <div class="feature-card" data-delay="6">
-                <div class="card-icon github">
-                    <i class="fab fa-github"></i>
+            <div class="feature-card" data-delay="500">
+                <div class="feature-icon" style="--icon-color: #00b894">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <h3>GitHub Pages</h3>
-                <p>Sobe páginas HTML diretamente para o GitHub Pages. Publique em segundos!</p>
+                <h3 class="feature-title">Agenda & Calendário</h3>
+                <p class="feature-desc">Gerencia eventos no Google Calendar, cria lembretes e mantém sua agenda organizada.</p>
+                <div class="feature-tags">
+                    <span>Calendar</span>
+                    <span>Lembretes</span>
+                </div>
             </div>
 
-            <div class="feature-card" data-delay="7">
-                <div class="card-icon telegram">
-                    <i class="fab fa-telegram"></i>
+            <div class="feature-card" data-delay="600">
+                <div class="feature-icon" style="--icon-color: #74b9ff">
+                    <i class="fas fa-brain"></i>
                 </div>
-                <h3>Integração Telegram</h3>
-                <p>Controle o Nexus pelo Telegram de qualquer lugar. Automação remota.</p>
+                <h3 class="feature-title">Memória de Longo Prazo</h3>
+                <p class="feature-desc">Aprende com cada interação. Lembra de projetos, preferências e instruções entre sessões.</p>
+                <div class="feature-tags">
+                    <span>Contextual</span>
+                    <span>Persistente</span>
+                </div>
             </div>
 
-            <div class="feature-card" data-delay="8">
-                <div class="card-icon backup">
-                    <i class="fas fa-shield-alt"></i>
+            <div class="feature-card" data-delay="700">
+                <div class="feature-icon" style="--icon-color: #a29bfe">
+                    <i class="fas fa-github"></i>
                 </div>
-                <h3>Backup Automático</h3>
-                <p>Sistema completo de backup e rollback. Segurança dos seus dados garantida.</p>
+                <h3 class="feature-title">Controle GitHub</h3>
+                <p class="feature-desc">Controle total sobre repositórios: lê, escreve, cria, deleta e faz deploy direto do chat.</p>
+                <div class="feature-tags">
+                    <span>API</span>
+                    <span>Power-User</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section" id="tools">
+        <div class="section-header">
+            <span class="section-badge">Ferramentas</span>
+            <h2 class="section-title">Kit de Ferramentas <span class="gradient-text">Completo</span></h2>
+            <p class="section-description">Tudo que você precisa, integrado em um só lugar.</p>
+        </div>
+
+        <div class="tools-showcase">
+            <div class="tool-category">
+                <h3><i class="fas fa-cog"></i> Sistema</h3>
+                <div class="tool-list">
+                    <span class="tool-chip"><i class="fas fa-microchip"></i> CPU/RAM/Battery</span>
+                    <span class="tool-chip"><i class="fas fa-bell"></i> Notificações</span>
+                    <span class="tool-chip"><i class="fas fa-keyboard"></i> Teclado/Mouse</span>
+                    <span class="tool-chip"><i class="fas fa-copy"></i> Clipboard</span>
+                    <span class="tool-chip"><i class="fas fa-sync"></i> Backup & Restore</span>
+                    <span class="tool-chip"><i class="fas fa-power-off"></i> Restart</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <h3><i class="fas fa-globe"></i> Web & Mídia</h3>
+                <div class="tool-list">
+                    <span class="tool-chip"><i class="fas fa-search"></i> Web Search</span>
+                    <span class="tool-chip"><i class="fas fa-robot"></i> Browser Agent</span>
+                    <span class="tool-chip"><i class="fas fa-chrome"></i> Launch App/URL</span>
+                    <span class="tool-chip"><i class="fas fa-music"></i> Media Control</span>
+                    <span class="tool-chip"><i class="fas fa-volume-up"></i> Sound Alert</span>
+                    <span class="tool-chip"><i class="fas fa-eye"></i> Screen Reader</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <h3><i class="fas fa-cloud"></i> Cloud & Dev</h3>
+                <div class="tool-list">
+                    <span class="tool-chip"><i class="fab fa-google-drive"></i> Google Drive</span>
+                    <span class="tool-chip"><i class="fab fa-github"></i> GitHub Control</span>
+                    <span class="tool-chip"><i class="fas fa-calendar"></i> Calendar</span>
+                    <span class="tool-chip"><i class="fas fa-code"></i> Python Sandbox</span>
+                    <span class="tool-chip"><i class="fas fa-globe"></i> HTTP Requests</span>
+                    <span class="tool-chip"><i class="fas fa-rocket"></i> GitHub Pages</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <h3><i class="fas fa-database"></i> Memória & Agenda</h3>
+                <div class="tool-list">
+                    <span class="tool-chip"><i class="fas fa-brain"></i> Query Memory</span>
+                    <span class="tool-chip"><i class="fas fa-pen"></i> Update Memory</span>
+                    <span class="tool-chip"><i class="fas fa-clock"></i> Scheduled Tasks</span>
+                    <span class="tool-chip"><i class="fas fa-tasks"></i> Agenda Management</span>
+                    <span class="tool-chip"><i class="fas fa-paw"></i> Pet Companion</span>
+                    <span class="tool-chip"><i class="fas fa-telegram"></i> Telegram Alerts</span>
+                </div>
             </div>
         </div>
     </section>
@@ -191,43 +292,41 @@
     <!-- Tech Section -->
     <section class="tech" id="tech">
         <div class="section-header">
-            <span class="section-tag">Stack</span>
-            <h2 class="section-title">Tecnologia <span class="gradient-text">por trás</span></h2>
-            <p class="section-desc">Construído com as melhores ferramentas para performance e confiabilidade</p>
+            <span class="section-badge">Tecnologia</span>
+            <h2 class="section-title">Arquitetura <span class="gradient-text">de Ponta</span></h2>
+            <p class="section-description">Construído com as tecnologias mais modernas para máxima performance.</p>
         </div>
 
-        <div class="tech-grid">
-            <div class="tech-item">
-                <i class="fab fa-python"></i>
-                <span>Python 3.12</span>
+        <div class="tech-stack">
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fab fa-python"></i></div>
+                <h3>Python 3.13</h3>
+                <p>Base sólida com a versão mais recente do Python</p>
             </div>
-            <div class="tech-item">
-                <i class="fas fa-bolt"></i>
-                <span>Claude Sonnet</span>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-robot"></i></div>
+                <h3>Claude Haiku</h3>
+                <p>IA de alta performance para respostas rápidas</p>
             </div>
-            <div class="tech-item">
-                <i class="fab fa-google"></i>
-                <span>Gemini API</span>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-eye"></i></div>
+                <h3>Llama Vision</h3>
+                <p>Visão computacional para analisar a tela</p>
             </div>
-            <div class="tech-item">
-                <i class="fas fa-cloud"></i>
-                <span>Google Drive</span>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-microphone"></i></div>
+                <h3>Reconhecimento de Voz</h3>
+                <p>Comandos por voz com TTS integrado</p>
             </div>
-            <div class="tech-item">
-                <i class="fab fa-html5"></i>
-                <span>Web Scraping</span>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-cubes"></i></div>
+                <h3>Playwright</h3>
+                <p>Automação de browser confiável</p>
             </div>
-            <div class="tech-item">
-                <i class="fas fa-windows"></i>
-                <span>Windows Native</span>
-            </div>
-            <div class="tech-item">
-                <i class="fas fa-terminal"></i>
-                <span>CLI + GUI</span>
-            </div>
-            <div class="tech-item">
-                <i class="fas fa-brain"></i>
-                <span>Memória Longa</span>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <h3>GitHub API</h3>
+                <p>Deploy e controle de versão nativos</p>
             </div>
         </div>
     </section>
@@ -235,64 +334,104 @@
     <!-- Commands Section -->
     <section class="commands" id="commands">
         <div class="section-header">
-            <span class="section-tag">Comandos</span>
-            <h2 class="section-title">Exemplos de <span class="gradient-text">Uso</span></h2>
-            <p class="section-desc">Veja como é fácil interagir com o Nexus</p>
+            <span class="section-badge">Comandos</span>
+            <h2 class="section-title">Fale com seu <span class="gradient-text">Assistente</span></h2>
+            <p class="section-description">Linguagem natural é o suficiente. Mas aqui vão alguns exemplos:</p>
         </div>
 
-        <div class="commands-container">
+        <div class="commands-grid">
             <div class="command-card">
-                <div class="command-icon">
-                    <i class="fas fa-folder-plus"></i>
-                </div>
-                <div class="command-info">
-                    <code class="command-text">"Nexus, crie uma pasta chamada Projetos"</code>
-                    <span class="command-desc">Organiza seus arquivos automaticamente</span>
-                </div>
+                <div class="command-icon"><i class="fas fa-laptop-code"></i></div>
+                <code>nexus, crie um site sobre aquários e faça deploy</code>
             </div>
             <div class="command-card">
-                <div class="command-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="command-info">
-                    <code class="command-text">"Nexus, toque uma música no YouTube"</code>
-                    <span class="command-desc">Abre e reproduz no navegador</span>
-                </div>
+                <div class="command-icon"><i class="fas fa-search"></i></div>
+                <code>me mostre os últimos vídeos do YouTube sobre Python</code>
             </div>
             <div class="command-card">
-                <div class="command-icon">
-                    <i class="fas fa-calendar-plus"></i>
-                </div>
-                <div class="command-info">
-                    <code class="command-text">"Nexus, agenda uma reunião amanhã às 14h"</code>
-                    <span class="command-desc">Cria evento no Google Calendar</span>
-                </div>
+                <div class="command-icon"><i class="fas fa-file"></i></div>
+                <code>leia o arquivo notas.txt e resuma pra mim</code>
             </div>
             <div class="command-card">
-                <div class="command-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="command-info">
-                    <code class="command-text">"Nexus, pesquise sobre inteligência artificial"</code>
-                    <span class="command-desc">Pesquisa na web e resume resultados</span>
-                </div>
+                <div class="command-icon"><i class="fas fa-bell"></i></div>
+                <code>me lembre de reunião amanhã às 14h no Telegram</code>
             </div>
             <div class="command-card">
-                <div class="command-icon">
-                    <i class="fas fa-upload"></i>
-                </div>
-                <div class="command-info">
-                    <code class="command-text">"Nexus, publique esta página no GitHub Pages"</code>
-                    <span class="command-desc">Sobe HTML para seu site automaticamente</span>
-                </div>
+                <div class="command-icon"><i class="fas fa-music"></i></div>
+                <code>aumenta o volume e toca a próxima música</code>
             </div>
             <div class="command-card">
-                <div class="command-icon">
-                    <i class="fas fa-robot"></i>
+                <div class="command-icon"><i class="fas fa-github"></i></div>
+                <code>atualiza o repositório nexus-landing-page com novo design</code>
+            </div>
+            <div class="command-card">
+                <div class="command-icon"><i class="fas fa-microchip"></i></div>
+                <code>como está a performance do sistema agora?</code>
+            </div>
+            <div class="command-card">
+                <div class="command-icon"><i class="fas fa-paw"></i></div>
+                <code>chama a Nexi, quero ver meu pet virtual</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="section-header">
+            <span class="section-badge">Estatísticas</span>
+            <h2 class="section-title">Nexus em <span class="gradient-text">Números</span></h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stats-card">
+                <i class="fas fa-tools"></i>
+                <div class="stats-card-number" data-target="25">0</div>
+                <p>Ferramentas Integradas</p>
+            </div>
+            <div class="stats-card">
+                <i class="fas fa-code-branch"></i>
+                <div class="stats-card-number" data-target="100">0</div>
+                <p>% Automação</p>
+            </div>
+            <div class="stats-card">
+                <i class="fas fa-bolt"></i>
+                <div class="stats-card-number" data-target="3">0</div>
+                <p>Segundos para Deploy</p>
+            </div>
+            <div class="stats-card">
+                <i class="fas fa-cloud"></i>
+                <div class="stats-card-number" data-target="100">0</div>
+                <p>% Disponibilidade</p>
+            </div>
+        </div>
+
+        <!-- Progress bars -->
+        <div class="progress-section">
+            <div class="progress-item">
+                <div class="progress-info">
+                    <span>Velocidade de Resposta</span>
+                    <span>98%</span>
                 </div>
-                <div class="command-info">
-                    <code class="command-text">"Nexus, como está a saúde do sistema?"</code>
-                    <span class="command-desc">Mostra CPU, RAM e bateria em tempo real</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 98%"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-info">
+                    <span>Precisão em Tarefas</span>
+                    <span>95%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-info">
+                    <span>Satisfação do Usuário</span>
+                    <span>100%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%"></div>
                 </div>
             </div>
         </div>
@@ -301,51 +440,74 @@
     <!-- Roadmap Section -->
     <section class="roadmap" id="roadmap">
         <div class="section-header">
-            <span class="section-tag">Futuro</span>
-            <h2 class="section-title">O que vem por <span class="gradient-text">aí</span></h2>
-            <p class="section-desc">Nossa visão para o Nexus está apenas começando</p>
+            <span class="section-badge">Roadmap</span>
+            <h2 class="section-title">O Futuro do <span class="gradient-text">Nexus</span></h2>
+            <p class="section-description">Estamos só começando. Veja o que está por vir:</p>
         </div>
 
         <div class="timeline">
-            <div class="timeline-item done">
-                <div class="timeline-dot"></div>
+            <div class="timeline-item completed">
+                <div class="timeline-dot"><i class="fas fa-check"></i></div>
                 <div class="timeline-content">
-                    <span class="timeline-status">✅ Concluído</span>
-                    <h3>Núcleo do Nexus</h3>
-                    <p>Assistente com voz, ferramentas de arquivo, navegação e calendário integrados.</p>
+                    <span class="timeline-date">Jun 2026</span>
+                    <h3>v1.0 - Lançamento</h3>
+                    <p>Assistente desktop com comandos por voz, texto e +15 ferramentas integradas.</p>
                 </div>
             </div>
-            <div class="timeline-item done">
-                <div class="timeline-dot"></div>
+            <div class="timeline-item completed">
+                <div class="timeline-dot"><i class="fas fa-check"></i></div>
                 <div class="timeline-content">
-                    <span class="timeline-status">✅ Concluído</span>
-                    <h3>GitHub Pages + Telegram</h3>
-                    <p>Publicação de páginas e controle remoto pelo Telegram implementados.</p>
+                    <span class="timeline-date">Jun 2026</span>
+                    <h3>v2.0 - Landing Page</h3>
+                    <p>Deploy de sites via GitHub Pages, memória de longo prazo e controle de mídia.</p>
                 </div>
             </div>
-            <div class="timeline-item current">
-                <div class="timeline-dot"></div>
+            <div class="timeline-item active">
+                <div class="timeline-dot"><i class="fas fa-spinner"></i></div>
                 <div class="timeline-content">
-                    <span class="timeline-status">🔄 Em andamento</span>
-                    <h3>Automação Multi-etapas</h3>
-                    <p>Pipeline de tarefas complexas com múltiplas ferramentas em sequência.</p>
-                </div>
-            </div>
-            <div class="timeline-item future">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="timeline-status">📅 Planejado</span>
-                    <h3>Modo Expert + RAG Local</h3>
-                    <p>Memória semântica com embeddings locais e modo técnico para desenvolvedores.</p>
+                    <span class="timeline-date">Jul 2026</span>
+                    <h3>v3.0 - Nexi Pet & Mais</h3>
+                    <p>Pet virtual flutuante Nexi, integração com Telegram, tarefas agendadas e mais.</p>
                 </div>
             </div>
             <div class="timeline-item future">
-                <div class="timeline-dot"></div>
+                <div class="timeline-dot"><i class="fas fa-star"></i></div>
                 <div class="timeline-content">
-                    <span class="timeline-status">🚀 Visão</span>
-                    <h3>Nexus Mobile + API Pública</h3>
-                    <p>Aplicativo mobile e API para integração com outros serviços.</p>
+                    <span class="timeline-date">Q3 2026</span>
+                    <h3>v4.0 - Multiagente</h3>
+                    <p>Agentes especializados trabalhando em paralelo, plugins, integração com APIs externas.</p>
                 </div>
+            </div>
+            <div class="timeline-item future">
+                <div class="timeline-dot"><i class="fas fa-rocket"></i></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Q4 2026</span>
+                    <h3>v5.0 - Nexus Cloud</h3>
+                    <p>Sincronização entre dispositivos, modo servidor, dashboard web e comunidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <div class="cta-orb"></div>
+            <h2 class="cta-title">Pronto para <span class="gradient-text">automatizar</span> seu desktop?</h2>
+            <p class="cta-text">Nexus está rodando agora mesmo, pronto para executar seus comandos.</p>
+            <div class="cta-actions">
+                <button class="btn btn-primary btn-large" onclick="showStatus()">
+                    <i class="fas fa-heart"></i>
+                    <span>Nexus está Online</span>
+                </button>
+                <a href="#features" class="btn btn-outline btn-large">
+                    <i class="fas fa-book"></i>
+                    <span>Documentação</span>
+                </a>
+            </div>
+            <div class="cta-status" id="ctaStatus">
+                <div class="status-dot online"></div>
+                <span>Sistema operacional: Windows | Último deploy: 14/06/2026</span>
             </div>
         </div>
     </section>
@@ -357,14 +519,36 @@
                 <div class="logo-icon">
                     <i class="fas fa-brain"></i>
                 </div>
-                <span>Nexus</span>
+                <span class="logo-text">Nexus</span>
+                <p>Assistente Desktop Autônomo com IA</p>
             </div>
-            <p class="footer-text">Feito com <i class="fas fa-heart" style="color: var(--primary)"></i> por Nexus Project AI</p>
             <div class="footer-links">
-                <a href="https://github.com/nexusprojectai" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <a href="#home">Home</a>
+                    <a href="#features">Funcionalidades</a>
+                    <a href="#tech">Tecnologia</a>
+                    <a href="#roadmap">Roadmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Tecnologias</h4>
+                    <a href="#">Python 3.13</a>
+                    <a href="#">Claude AI</a>
+                    <a href="#">Playwright</a>
+                    <a href="#">GitHub API</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="https://github.com/Nexusprojectai" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter/X</a>
+                    <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NexusAI. Feito com <i class="fas fa-heart" style="color: #fd79a8"></i> e IA.</p>
+            <p>Deploy automático via GitHub Pages 🚀</p>
         </div>
     </footer>
 
