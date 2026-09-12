@@ -41,6 +41,7 @@
     <a href="#tools" data-sec="tools">TOOLS</a>
     <a href="#tech" data-sec="tech">TECH</a>
     <a href="#commands" data-sec="commands">CMD</a>
+    <a href="#playground" data-sec="playground">TERM</a>
     <a href="#stats" data-sec="stats">STATS</a>
     <a href="#roadmap" data-sec="roadmap">ROADMAP</a>
   </nav>
@@ -289,6 +290,37 @@
     <div class="tl-item reveal"><span class="tl-date">JUL 2026</span><div class="tl-body"><h3>v3.0 — Nexi Pet &amp; Mais</h3><p>Pet virtual flutuante Nexi, integração com Telegram, tarefas agendadas e mais.</p></div></div>
     <div class="tl-item reveal"><span class="tl-date">Q3 2026</span><div class="tl-body"><h3>v4.0 — Multiagente</h3><p>Múltiplos agentes trabalhando em paralelo, orquestração inteligente e modo cluster.</p></div></div>
     <div class="tl-item reveal"><span class="tl-date">Q4 2026</span><div class="tl-body"><h3>v5.0 — Plugins &amp; Extensões</h3><p>SDK aberto para a comunidade criar plugins, marketplace e temas customizados.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TERMINAL INTERATIVO ============ -->
+<section class="section section-dark" id="playground">
+  <div class="sec-head reveal">
+    <span class="sec-index">08</span>
+    <h2 class="sec-title">TESTE O NEXUS AGORA</h2>
+    <p class="sec-desc">Sem instalar nada. Digite um comando em linguagem natural e veja o que ele faz — igualzinho ao desktop.</p>
+  </div>
+
+  <div class="term-wrap reveal">
+    <div class="term" id="pgTerm">
+      <div class="term-bar">
+        <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+        <span class="term-title">nexus@local:~</span>
+        <span class="term-hint">digite "help"</span>
+      </div>
+      <div class="term-body" id="pgBody" aria-live="polite"></div>
+      <form class="term-form" id="pgForm" autocomplete="off">
+        <span class="term-prompt">nexus &raquo;</span>
+        <input class="term-input" id="pgInput" type="text"
+               placeholder="nexus, crie um site sobre aqu&aacute;rios" aria-label="Digite um comando para o Nexus" />
+        <button class="term-send" type="submit" aria-label="Enviar comando">&#9166;</button>
+      </form>
+    </div>
+    <div class="term-side">
+      <p class="term-side-t">COMANDOS R&Aacute;PIDOS</p>
+      <div class="term-chips" id="pgChips"></div>
+      <p class="term-note">// simula&ccedil;&atilde;o no navegador &mdash; o Nexus real roda no seu desktop e executa de verdade</p>
+    </div>
   </div>
 </section>
 
