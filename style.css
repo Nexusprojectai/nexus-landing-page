@@ -347,6 +347,27 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
   .hero-cta .btn{flex:1}
 }
 
+/* ---------- STATE SYNC: classes controladas pelo script.js ---------- */
+.nav.is-scrolled{box-shadow:0 8px 0 rgba(10,10,10,.12)}
+.nav-links a.is-active{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.nav-links.is-open{transform:translateY(0)}
+.menu-btn.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.menu-btn.is-open span:nth-child(2){opacity:0}
+.menu-btn.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+body.no-scroll{overflow:hidden}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* ---------- COMPONENTES COMPLEMENTARES ---------- */
+.brand-name{font-family:var(--font-d);font-weight:800;letter-spacing:.05em}
+.hero-left{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,30px)}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.bar-row{display:block;margin-bottom:18px}
+.typing{color:var(--lime);font-weight:700}
+.egg{animation:egg-pop .7s cubic-bezier(.2,.9,.2,1) both}
+@keyframes egg-pop{0%{transform:scale(.82) rotate(-3deg)}60%{transform:scale(1.06) rotate(2deg)}100%{transform:scale(1) rotate(0)}}
+@media (max-width:1080px){.tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.tools-grid{grid-template-columns:1fr}}
+
 /* ---------- MOTION ---------- */
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
